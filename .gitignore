@@ -1,9 +1,26 @@
+# Secrets & Credentials
 .env
+
+# Virtual Environment
 .venv/
+
+# Python Cache
 __pycache__/
 *.pyc
+*.pyo
+
+# Airflow Logs (regenerated on each run)
 airflow/logs/
+
+# Runtime Data (not version-controlled)
 *.db
 *.csv
 stream_landing/
+
+# IDE
 .vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
