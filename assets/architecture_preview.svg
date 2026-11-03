@@ -1,251 +1,217 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
   <defs>
+    <radialGradient id="bg-grad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0B0F19"/>
+    </radialGradient>
+    <filter id="glow-blue" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-amber" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <linearGradient id="arrow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#38BDF8" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="arrow-grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#0284C7" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="arrow-grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#F59E0B" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0.3"/>
+    </linearGradient>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38BDF8"/>
+    </marker>
+    <marker id="arrowhead-cyan" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0284C7"/>
+    </marker>
+    <marker id="arrowhead-amber" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#F59E0B"/>
+    </marker>
     <style>
       text { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; }
     </style>
-    <filter id="card-s" x="-2%" y="-2%" width="104%" height="108%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.06"/>
-    </filter>
-    <filter id="badge-s" x="-5%" y="-10%" width="110%" height="130%">
-      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#0F172A" flood-opacity="0.08"/>
-    </filter>
   </defs>
 
-  <!-- ═══════════════════════════════════════ -->
-  <!-- BACKGROUND                             -->
-  <!-- ═══════════════════════════════════════ -->
-  <rect width="1200" height="720" fill="#F4F7FA" rx="0"/>
-  <!-- Subtle top gradient bar -->
-  <rect width="1200" height="82" fill="#1B3A4B"/>
-  <rect y="82" width="1200" height="1" fill="#E2E8F0"/>
-
-  <!-- ═══════════════════════════════════════ -->
-  <!-- HEADER                                 -->
-  <!-- ═══════════════════════════════════════ -->
-  <text x="55" y="38" fill="#FFFFFF" font-size="22" font-weight="800" letter-spacing="1.5">TELECOM CDC LAKEHOUSE</text>
-  <text x="55" y="62" fill="#94B8C8" font-size="12" font-weight="400">CDC streaming events · Apache Airflow orchestration · Amazon S3 data lake · Snowflake medallion warehouse</text>
-
-  <!-- Status Badge -->
-  <rect x="950" y="22" width="205" height="34" rx="17" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1" filter="url(#badge-s)"/>
-  <circle cx="970" cy="39" r="5" fill="#10B981"/>
-  <text x="983" y="44" fill="#065F46" font-size="11" font-weight="700" letter-spacing="0.8">VALIDATED THROUGH GOLD</text>
-
-  <!-- ═══════════════════════════════════════ -->
-  <!-- SECTION 01 HEADER                      -->
-  <!-- ═══════════════════════════════════════ -->
-  <text x="55" y="118" fill="#1B3A4B" font-size="12" font-weight="700" letter-spacing="1.2">01 · CDC EVENT GENERATION &amp; ORCHESTRATION</text>
-
-  <!-- ═══════════════════════════════════════ -->
-  <!-- ROW 1 CARDS                            -->
-  <!-- Card layout: 4 cards, 245px wide, 30px gap -->
-  <!-- Positions: x=55, x=330, x=605, x=880  -->
-  <!-- ═══════════════════════════════════════ -->
-
-  <!-- CARD 1: SQLite + CDC Triggers -->
-  <g filter="url(#card-s)">
-    <rect x="55" y="135" width="245" height="185" rx="8" fill="#FFFFFF" stroke="#E8EDF2" stroke-width="1"/>
-    <rect x="55" y="135" width="245" height="4.5" rx="2" fill="#1B3A4B"/>
+  <!-- Background -->
+  <rect width="1200" height="500" fill="url(#bg-grad)" rx="12"/>
+  
+  <!-- Subtle grid pattern -->
+  <g opacity="0.04">
+    <line x1="0" y1="100" x2="1200" y2="100" stroke="#94A3B8" stroke-width="0.5"/>
+    <line x1="0" y1="200" x2="1200" y2="200" stroke="#94A3B8" stroke-width="0.5"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="#94A3B8" stroke-width="0.5"/>
+    <line x1="0" y1="400" x2="1200" y2="400" stroke="#94A3B8" stroke-width="0.5"/>
+    <line x1="200" y1="0" x2="200" y2="500" stroke="#94A3B8" stroke-width="0.5"/>
+    <line x1="400" y1="0" x2="400" y2="500" stroke="#94A3B8" stroke-width="0.5"/>
+    <line x1="600" y1="0" x2="600" y2="500" stroke="#94A3B8" stroke-width="0.5"/>
+    <line x1="800" y1="0" x2="800" y2="500" stroke="#94A3B8" stroke-width="0.5"/>
+    <line x1="1000" y1="0" x2="1000" y2="500" stroke="#94A3B8" stroke-width="0.5"/>
   </g>
-  <!-- Icon -->
-  <rect x="75" y="158" width="36" height="36" rx="8" fill="#EFF6F8"/>
-  <text x="93" y="182" text-anchor="middle" fill="#1B3A4B" font-size="16" font-weight="600">{ }</text>
-  <!-- Content -->
-  <text x="75" y="217" fill="#1B2A4A" font-size="15" font-weight="700">SQLite + CDC Triggers</text>
-  <text x="75" y="237" fill="#64748B" font-size="11" font-weight="500">Source OLTP database</text>
-  <line x1="75" y1="250" x2="280" y2="250" stroke="#F1F5F9" stroke-width="1"/>
-  <text x="75" y="269" fill="#94A3B8" font-size="10.5">JSON delta capture</text>
-  <text x="75" y="286" fill="#94A3B8" font-size="10.5">AFTER UPDATE trigger logging</text>
-  <text x="75" y="303" fill="#94A3B8" font-size="10.5">before / after state payloads</text>
 
-  <!-- Arrow 1→2 -->
-  <line x1="305" y1="228" x2="325" y2="228" stroke="#94A3B8" stroke-width="1.5"/>
-  <polygon points="323,224 331,228 323,232" fill="#94A3B8"/>
+  <!-- Title -->
+  <text x="600" y="42" text-anchor="middle" fill="#E2E8F0" font-size="18" font-weight="700" letter-spacing="2">TELECOM CDC LAKEHOUSE — ARCHITECTURE</text>
+  <line x1="380" y1="52" x2="820" y2="52" stroke="#38BDF8" stroke-width="1" opacity="0.4"/>
 
-  <!-- CARD 2: Python CDC Producer -->
-  <g filter="url(#card-s)">
-    <rect x="330" y="135" width="245" height="185" rx="8" fill="#FFFFFF" stroke="#E8EDF2" stroke-width="1"/>
-    <rect x="330" y="135" width="245" height="4.5" rx="2" fill="#1B3A4B"/>
+  <!-- ════════════════════════════════════════════ -->
+  <!-- NODE 1: CDC Event Generator -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#card-shadow)">
+    <rect x="30" y="120" width="200" height="240" rx="12" fill="#111827" stroke="#1E293B" stroke-width="1.5"/>
+    <rect x="30" y="120" width="200" height="4" rx="2" fill="#38BDF8"/>
   </g>
-  <!-- Icon -->
-  <rect x="350" y="158" width="36" height="36" rx="8" fill="#EFF6F8"/>
-  <g transform="translate(358,163)">
-    <path d="M10,2 C10,2 5,2 5,6 L5,12 C5,16 0,16 0,16 M10,22 C10,22 15,22 15,18 L15,12 C15,8 20,8 20,8" stroke="#1B3A4B" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-    <circle cx="5" cy="6" r="1.5" fill="#1B3A4B"/>
-    <circle cx="15" cy="18" r="1.5" fill="#1B3A4B"/>
+  <!-- Icon badge -->
+  <circle cx="130" cy="165" r="22" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="130" y="160" text-anchor="middle" fill="#38BDF8" font-size="11" font-weight="600">⟨/⟩</text>
+  <text x="130" y="173" text-anchor="middle" fill="#38BDF8" font-size="7" font-weight="500">PY</text>
+  <!-- Labels -->
+  <text x="130" y="205" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="700">CDC Event</text>
+  <text x="130" y="222" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="700">Generator</text>
+  <line x1="80" y1="232" x2="180" y2="232" stroke="#1E293B" stroke-width="1"/>
+  <text x="130" y="252" text-anchor="middle" fill="#94A3B8" font-size="10">Python Mutations</text>
+  <text x="130" y="268" text-anchor="middle" fill="#94A3B8" font-size="10">SQLite CDC Triggers</text>
+  <text x="130" y="284" text-anchor="middle" fill="#94A3B8" font-size="10">JSONL Streaming</text>
+  <!-- Stat chip -->
+  <rect x="68" y="300" width="124" height="24" rx="12" fill="#38BDF810" stroke="#38BDF8" stroke-width="0.8"/>
+  <text x="130" y="316" text-anchor="middle" fill="#38BDF8" font-size="10" font-weight="600">48,000+ Events</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- ARROW 1→2 -->
+  <!-- ════════════════════════════════════════════ -->
+  <line x1="235" y1="240" x2="280" y2="240" stroke="url(#arrow-grad)" stroke-width="2" marker-end="url(#arrowhead-blue)" filter="url(#glow-blue)" opacity="0.85"/>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- NODE 2: Airflow Orchestration -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#card-shadow)">
+    <rect x="290" y="120" width="200" height="240" rx="12" fill="#111827" stroke="#1E293B" stroke-width="1.5"/>
+    <rect x="290" y="120" width="200" height="4" rx="2" fill="#0284C7"/>
   </g>
-  <!-- Content -->
-  <text x="350" y="217" fill="#1B2A4A" font-size="15" font-weight="700">Python CDC Producer</text>
-  <text x="350" y="237" fill="#64748B" font-size="11" font-weight="500">Mutation simulation engine</text>
-  <line x1="350" y1="250" x2="555" y2="250" stroke="#F1F5F9" stroke-width="1"/>
-  <text x="350" y="269" fill="#94A3B8" font-size="10.5">JSONL stream serializer</text>
-  <text x="350" y="286" fill="#94A3B8" font-size="10.5">churn · plan_upgrade · usage_spike</text>
-  <text x="350" y="303" fill="#94A3B8" font-size="10.5">48,000+ events generated</text>
+  <!-- Icon badge -->
+  <circle cx="390" cy="165" r="22" fill="#0F172A" stroke="#0284C7" stroke-width="1.5"/>
+  <text x="390" y="171" text-anchor="middle" fill="#0284C7" font-size="18">⟳</text>
+  <!-- Labels -->
+  <text x="390" y="205" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="700">Airflow</text>
+  <text x="390" y="222" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="700">Orchestration</text>
+  <line x1="340" y1="232" x2="440" y2="232" stroke="#1E293B" stroke-width="1"/>
+  <text x="390" y="252" text-anchor="middle" fill="#94A3B8" font-size="10">Dockerized DAG</text>
+  <text x="390" y="268" text-anchor="middle" fill="#94A3B8" font-size="10">6-Task Pipeline</text>
+  <text x="390" y="284" text-anchor="middle" fill="#94A3B8" font-size="10">PythonOperator</text>
+  <!-- Stat chip -->
+  <rect x="328" y="300" width="124" height="24" rx="12" fill="#0284C710" stroke="#0284C7" stroke-width="0.8"/>
+  <text x="390" y="316" text-anchor="middle" fill="#0284C7" font-size="10" font-weight="600">@daily Schedule</text>
 
-  <!-- Arrow 2→3 -->
-  <line x1="580" y1="228" x2="600" y2="228" stroke="#94A3B8" stroke-width="1.5"/>
-  <polygon points="598,224 606,228 598,232" fill="#94A3B8"/>
+  <!-- ════════════════════════════════════════════ -->
+  <!-- ARROW 2→3 -->
+  <!-- ════════════════════════════════════════════ -->
+  <line x1="495" y1="240" x2="540" y2="240" stroke="url(#arrow-grad2)" stroke-width="2" marker-end="url(#arrowhead-cyan)" filter="url(#glow-blue)" opacity="0.85"/>
 
-  <!-- CARD 3: Airflow Orchestration -->
-  <g filter="url(#card-s)">
-    <rect x="605" y="135" width="245" height="185" rx="8" fill="#FFFFFF" stroke="#E8EDF2" stroke-width="1"/>
-    <rect x="605" y="135" width="245" height="4.5" rx="2" fill="#1B3A4B"/>
+  <!-- ════════════════════════════════════════════ -->
+  <!-- NODE 3: AWS S3 Staging -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#card-shadow)">
+    <rect x="550" y="120" width="200" height="240" rx="12" fill="#111827" stroke="#1E293B" stroke-width="1.5"/>
+    <rect x="550" y="120" width="200" height="4" rx="2" fill="#F59E0B"/>
   </g>
-  <!-- Icon -->
-  <rect x="625" y="158" width="36" height="36" rx="8" fill="#EFF6F8"/>
-  <g transform="translate(633,167)">
-    <path d="M10,0 A10,10 0 1,1 0,10" stroke="#1B3A4B" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-    <polygon points="0,6 0,14 5,10" fill="#1B3A4B"/>
+  <!-- Icon badge -->
+  <circle cx="650" cy="165" r="22" fill="#0F172A" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="650" y="171" text-anchor="middle" fill="#F59E0B" font-size="16">☁</text>
+  <!-- Labels -->
+  <text x="650" y="205" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="700">AWS S3</text>
+  <text x="650" y="222" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="700">Staging</text>
+  <line x1="600" y1="232" x2="700" y2="232" stroke="#1E293B" stroke-width="1"/>
+  <text x="650" y="252" text-anchor="middle" fill="#94A3B8" font-size="10">Partitioned Landing</text>
+  <text x="650" y="268" text-anchor="middle" fill="#94A3B8" font-size="10">Env-Driven Creds</text>
+  <text x="650" y="284" text-anchor="middle" fill="#94A3B8" font-size="10">Batch Upload</text>
+  <!-- Stat chip -->
+  <rect x="588" y="300" width="124" height="24" rx="12" fill="#F59E0B10" stroke="#F59E0B" stroke-width="0.8"/>
+  <text x="650" y="316" text-anchor="middle" fill="#F59E0B" font-size="10" font-weight="600">raw/ Prefix</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- ARROW 3→4 -->
+  <!-- ════════════════════════════════════════════ -->
+  <line x1="755" y1="240" x2="800" y2="240" stroke="url(#arrow-grad3)" stroke-width="2" marker-end="url(#arrowhead-amber)" filter="url(#glow-amber)" opacity="0.85"/>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- NODE 4: Snowflake Medallion Lakehouse -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#card-shadow)">
+    <rect x="810" y="80" width="360" height="340" rx="12" fill="#111827" stroke="#1E293B" stroke-width="1.5"/>
+    <rect x="810" y="80" width="360" height="4" rx="2" fill="#29B5E8"/>
   </g>
-  <!-- Content -->
-  <text x="625" y="217" fill="#1B2A4A" font-size="15" font-weight="700">Airflow Orchestration</text>
-  <text x="625" y="237" fill="#64748B" font-size="11" font-weight="500">Dockerized 6-task DAG</text>
-  <line x1="625" y1="250" x2="830" y2="250" stroke="#F1F5F9" stroke-width="1"/>
-  <text x="625" y="269" fill="#94A3B8" font-size="10.5">PythonOperator · SnowflakeOperator</text>
-  <text x="625" y="286" fill="#94A3B8" font-size="10.5">S3 upload → Bronze → Silver → Gold</text>
-  <text x="625" y="303" fill="#94A3B8" font-size="10.5">@daily schedule · auto-retry</text>
+  <!-- Header -->
+  <circle cx="990" cy="115" r="18" fill="#0F172A" stroke="#29B5E8" stroke-width="1.5"/>
+  <text x="990" y="121" text-anchor="middle" fill="#29B5E8" font-size="14">❄</text>
+  <text x="990" y="148" text-anchor="middle" fill="#F1F5F9" font-size="14" font-weight="700">Snowflake Medallion Lakehouse</text>
+  <line x1="850" y1="160" x2="1130" y2="160" stroke="#1E293B" stroke-width="1"/>
 
-  <!-- Arrow 3→4 -->
-  <line x1="855" y1="228" x2="875" y2="228" stroke="#94A3B8" stroke-width="1.5"/>
-  <polygon points="873,224 881,228 873,232" fill="#94A3B8"/>
+  <!-- Bronze Sub-card -->
+  <rect x="835" y="175" width="310" height="52" rx="8" fill="#1A1207" stroke="#B4530950" stroke-width="1"/>
+  <rect x="835" y="175" width="4" height="52" rx="2" fill="#B45309"/>
+  <circle cx="862" cy="201" r="10" fill="#B4530920" stroke="#B45309" stroke-width="1"/>
+  <text x="862" y="205" text-anchor="middle" fill="#B45309" font-size="10" font-weight="700">B</text>
+  <text x="885" y="196" fill="#D97706" font-size="12" font-weight="700">Bronze</text>
+  <text x="885" y="214" fill="#92764A" font-size="10">Raw JSON (VARIANT) · Schema-on-Read</text>
 
-  <!-- CARD 4: Amazon S3 -->
-  <g filter="url(#card-s)">
-    <rect x="880" y="135" width="265" height="185" rx="8" fill="#FFFFFF" stroke="#E8EDF2" stroke-width="1"/>
-    <rect x="880" y="135" width="265" height="4.5" rx="2" fill="#1B3A4B"/>
-  </g>
-  <!-- Icon -->
-  <rect x="900" y="158" width="36" height="36" rx="8" fill="#EFF6F8"/>
-  <g transform="translate(908,165)">
-    <path d="M2,14 Q10,4 18,14" stroke="#1B3A4B" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-    <path d="M0,14 Q10,8 20,14" stroke="#1B3A4B" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.5"/>
-  </g>
-  <!-- Content -->
-  <text x="900" y="217" fill="#1B2A4A" font-size="15" font-weight="700">Amazon S3</text>
-  <text x="900" y="237" fill="#64748B" font-size="11" font-weight="500">Raw JSON landing zone</text>
-  <line x1="900" y1="250" x2="1125" y2="250" stroke="#F1F5F9" stroke-width="1"/>
-  <text x="900" y="269" fill="#94A3B8" font-size="10.5">Partitioned batch uploads</text>
-  <text x="900" y="286" fill="#94A3B8" font-size="10.5">Environment-driven credentials</text>
-  <text x="900" y="303" fill="#94A3B8" font-size="10.5">raw/ prefix · boto3 client</text>
+  <!-- Silver Sub-card -->
+  <rect x="835" y="238" width="310" height="52" rx="8" fill="#12151B" stroke="#94A3B840" stroke-width="1"/>
+  <rect x="835" y="238" width="4" height="52" rx="2" fill="#94A3B8"/>
+  <circle cx="862" cy="264" r="10" fill="#94A3B820" stroke="#94A3B8" stroke-width="1"/>
+  <text x="862" y="268" text-anchor="middle" fill="#94A3B8" font-size="10" font-weight="700">S</text>
+  <text x="885" y="259" fill="#CBD5E1" font-size="12" font-weight="700">Silver</text>
+  <text x="885" y="277" fill="#64748B" font-size="10">QUALIFY Dedup · Typed Cleanse · Deltas</text>
 
-  <!-- ═══════════════════════════════════════ -->
-  <!-- SEPARATOR PILL                         -->
-  <!-- ═══════════════════════════════════════ -->
-  <rect x="370" y="348" width="460" height="32" rx="16" fill="#FFFFFF" stroke="#D1D9E0" stroke-width="1" filter="url(#badge-s)"/>
-  <text x="600" y="369" text-anchor="middle" fill="#64748B" font-size="10.5" font-weight="600" letter-spacing="1.5">SNOWFLAKE COPY INTO · EXTERNAL STAGE FROM S3</text>
+  <!-- Gold Sub-card -->
+  <rect x="835" y="301" width="310" height="52" rx="8" fill="#1A1607" stroke="#FBBF2440" stroke-width="1"/>
+  <rect x="835" y="301" width="4" height="52" rx="2" fill="#FBBF24"/>
+  <circle cx="862" cy="327" r="10" fill="#FBBF2420" stroke="#FBBF24" stroke-width="1"/>
+  <text x="862" y="331" text-anchor="middle" fill="#FBBF24" font-size="10" font-weight="700">G</text>
+  <text x="885" y="322" fill="#FCD34D" font-size="12" font-weight="700">Gold</text>
+  <text x="885" y="340" fill="#92874A" font-size="10">Star Schema · fact_churn_summary · BI</text>
 
-  <!-- Vertical connector lines -->
-  <line x1="600" y1="320" x2="600" y2="348" stroke="#C8D1DA" stroke-width="1" stroke-dasharray="4,3"/>
-  <line x1="600" y1="380" x2="600" y2="408" stroke="#C8D1DA" stroke-width="1" stroke-dasharray="4,3"/>
+  <!-- Medallion flow arrows inside card -->
+  <text x="990" y="170" text-anchor="middle" fill="#475569" font-size="8" letter-spacing="6">▼   ▼   ▼</text>
+  <text x="845" y="234" fill="#475569" font-size="8">▼</text>
+  <text x="845" y="297" fill="#475569" font-size="8">▼</text>
 
-  <!-- ═══════════════════════════════════════ -->
-  <!-- SECTION 02 HEADER                      -->
-  <!-- ═══════════════════════════════════════ -->
-  <text x="55" y="408" fill="#1B3A4B" font-size="12" font-weight="700" letter-spacing="1.2">02 · WAREHOUSE TRANSFORMATION</text>
+  <!-- ════════════════════════════════════════════ -->
+  <!-- Animated pulse dots on arrows -->
+  <!-- ════════════════════════════════════════════ -->
+  <circle r="3" fill="#38BDF8" opacity="0.9">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M235,240 L280,240"/>
+  </circle>
+  <circle r="3" fill="#0284C7" opacity="0.9">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M495,240 L540,240" begin="0.5s"/>
+  </circle>
+  <circle r="3" fill="#F59E0B" opacity="0.9">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M755,240 L800,240" begin="1s"/>
+  </circle>
 
-  <!-- ═══════════════════════════════════════ -->
-  <!-- ROW 2 CARDS (Teal-green accent)        -->
-  <!-- ═══════════════════════════════════════ -->
+  <!-- ════════════════════════════════════════════ -->
+  <!-- Bottom Pipeline Flow Labels -->
+  <!-- ════════════════════════════════════════════ -->
+  <text x="258" y="400" text-anchor="middle" fill="#475569" font-size="9">JSONL</text>
+  <text x="258" y="412" text-anchor="middle" fill="#475569" font-size="9">Stream</text>
+  <text x="518" y="400" text-anchor="middle" fill="#475569" font-size="9">boto3</text>
+  <text x="518" y="412" text-anchor="middle" fill="#475569" font-size="9">Upload</text>
+  <text x="778" y="400" text-anchor="middle" fill="#475569" font-size="9">COPY</text>
+  <text x="778" y="412" text-anchor="middle" fill="#475569" font-size="9">INTO</text>
 
-  <!-- CARD 5: Snowflake Stage -->
-  <g filter="url(#card-s)">
-    <rect x="55" y="425" width="245" height="175" rx="8" fill="#FFFFFF" stroke="#E8EDF2" stroke-width="1"/>
-    <rect x="55" y="425" width="245" height="4.5" rx="2" fill="#0D7377"/>
-  </g>
-  <!-- Icon -->
-  <rect x="75" y="448" width="36" height="36" rx="8" fill="#EEFBFB"/>
-  <g transform="translate(83,455)">
-    <rect x="2" y="0" width="16" height="4" rx="1" fill="#0D7377"/>
-    <rect x="2" y="7" width="16" height="4" rx="1" fill="#0D7377" opacity="0.6"/>
-    <rect x="2" y="14" width="16" height="4" rx="1" fill="#0D7377" opacity="0.3"/>
-  </g>
-  <!-- Content -->
-  <text x="75" y="507" fill="#1B2A4A" font-size="15" font-weight="700">Snowflake Stage</text>
-  <text x="75" y="527" fill="#64748B" font-size="11" font-weight="500">S3_RAW_STAGE + JSON_FORMAT</text>
-  <line x1="75" y1="539" x2="280" y2="539" stroke="#F1F5F9" stroke-width="1"/>
-  <text x="75" y="558" fill="#94A3B8" font-size="10.5">Reads raw objects from S3</text>
-  <text x="75" y="575" fill="#94A3B8" font-size="10.5">METADATA$FILENAME lineage</text>
-
-  <!-- Arrow 5→6 -->
-  <line x1="305" y1="513" x2="325" y2="513" stroke="#94A3B8" stroke-width="1.5"/>
-  <polygon points="323,509 331,513 323,517" fill="#94A3B8"/>
-
-  <!-- CARD 6: Bronze -->
-  <g filter="url(#card-s)">
-    <rect x="330" y="425" width="245" height="175" rx="8" fill="#FFFFFF" stroke="#E8EDF2" stroke-width="1"/>
-    <rect x="330" y="425" width="245" height="4.5" rx="2" fill="#0D7377"/>
-  </g>
-  <!-- Icon -->
-  <rect x="350" y="448" width="36" height="36" rx="8" fill="#EEFBFB"/>
-  <g transform="translate(358,454)">
-    <rect x="2" y="2" width="16" height="20" rx="2" stroke="#0D7377" stroke-width="1.6" fill="none"/>
-    <line x1="6" y1="9" x2="14" y2="9" stroke="#0D7377" stroke-width="1.2"/>
-    <line x1="6" y1="13" x2="14" y2="13" stroke="#0D7377" stroke-width="1.2"/>
-    <line x1="6" y1="17" x2="12" y2="17" stroke="#0D7377" stroke-width="1.2"/>
-  </g>
-  <!-- Content -->
-  <text x="350" y="507" fill="#1B2A4A" font-size="15" font-weight="700">Bronze</text>
-  <text x="350" y="527" fill="#64748B" font-size="11" font-weight="500">One raw event table</text>
-  <line x1="350" y1="539" x2="555" y2="539" stroke="#F1F5F9" stroke-width="1"/>
-  <text x="350" y="558" fill="#94A3B8" font-size="10.5">VARIANT payload + file lineage</text>
-  <text x="350" y="575" fill="#94A3B8" font-size="10.5">Schema-on-read ingestion</text>
-
-  <!-- Arrow 6→7 -->
-  <line x1="580" y1="513" x2="600" y2="513" stroke="#94A3B8" stroke-width="1.5"/>
-  <polygon points="598,509 606,513 598,517" fill="#94A3B8"/>
-
-  <!-- CARD 7: Silver -->
-  <g filter="url(#card-s)">
-    <rect x="605" y="425" width="245" height="175" rx="8" fill="#FFFFFF" stroke="#E8EDF2" stroke-width="1"/>
-    <rect x="605" y="425" width="245" height="4.5" rx="2" fill="#0D7377"/>
-  </g>
-  <!-- Icon -->
-  <rect x="625" y="448" width="36" height="36" rx="8" fill="#EEFBFB"/>
-  <g transform="translate(633,454)">
-    <rect x="2" y="2" width="16" height="20" rx="2" stroke="#0D7377" stroke-width="1.6" fill="none"/>
-    <polyline points="6,14 9,17 15,9" stroke="#0D7377" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <!-- Content -->
-  <text x="625" y="507" fill="#1B2A4A" font-size="15" font-weight="700">Silver</text>
-  <text x="625" y="527" fill="#64748B" font-size="11" font-weight="500">One typed event table</text>
-  <line x1="625" y1="539" x2="830" y2="539" stroke="#F1F5F9" stroke-width="1"/>
-  <text x="625" y="558" fill="#94A3B8" font-size="10.5">QUALIFY ROW_NUMBER() dedup</text>
-  <text x="625" y="575" fill="#94A3B8" font-size="10.5">Cleaned values + usage deltas</text>
-
-  <!-- Arrow 7→8 -->
-  <line x1="855" y1="513" x2="875" y2="513" stroke="#94A3B8" stroke-width="1.5"/>
-  <polygon points="873,509 881,513 873,517" fill="#94A3B8"/>
-
-  <!-- CARD 8: Gold -->
-  <g filter="url(#card-s)">
-    <rect x="880" y="425" width="265" height="175" rx="8" fill="#FFFFFF" stroke="#E8EDF2" stroke-width="1"/>
-    <rect x="880" y="425" width="265" height="4.5" rx="2" fill="#0D7377"/>
-  </g>
-  <!-- Icon -->
-  <rect x="900" y="448" width="36" height="36" rx="8" fill="#EEFBFB"/>
-  <g transform="translate(908,456)">
-    <rect x="0" y="12" width="5" height="8" rx="1" fill="#0D7377" opacity="0.5"/>
-    <rect x="7" y="7" width="5" height="13" rx="1" fill="#0D7377" opacity="0.7"/>
-    <rect x="14" y="2" width="5" height="18" rx="1" fill="#0D7377"/>
-  </g>
-  <!-- Content -->
-  <text x="900" y="507" fill="#1B2A4A" font-size="15" font-weight="700">Gold</text>
-  <text x="900" y="527" fill="#64748B" font-size="11" font-weight="500">Star schema analytics</text>
-  <line x1="900" y1="539" x2="1125" y2="539" stroke="#F1F5F9" stroke-width="1"/>
-  <text x="900" y="558" fill="#94A3B8" font-size="10.5">fact_churn_events + dimensions</text>
-  <text x="900" y="575" fill="#94A3B8" font-size="10.5">dim_date · dim_usage_band</text>
-
-  <!-- ═══════════════════════════════════════ -->
-  <!-- FOOTER                                 -->
-  <!-- ═══════════════════════════════════════ -->
-  <line x1="55" y1="638" x2="1145" y2="638" stroke="#E2E8F0" stroke-width="1"/>
-
-  <!-- Footer Card 1 -->
-  <rect x="55" y="655" width="510" height="48" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="75" y="675" fill="#1B2A4A" font-size="12" font-weight="700">Validated walkthrough</text>
-  <text x="75" y="693" fill="#94A3B8" font-size="10.5">48k+ CDC events generated · S3 staged · 48k Bronze / Silver records · Gold star schema aggregates</text>
-
-  <!-- Footer Card 2 -->
-  <rect x="585" y="655" width="560" height="48" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="605" y="675" fill="#1B2A4A" font-size="12" font-weight="700">Execution boundary</text>
-  <text x="605" y="693" fill="#94A3B8" font-size="10.5">Airflow orchestrates S3 upload + Snowflake transformations via SnowflakeOperator DAG tasks.</text>
+  <!-- Footer -->
+  <line x1="100" y1="460" x2="1100" y2="460" stroke="#1E293B" stroke-width="0.8"/>
+  <text x="30" y="482" fill="#475569" font-size="10">Atharva Nahire</text>
+  <text x="300" y="482" fill="#475569" font-size="10">GitHub: atharvanahire1-1</text>
+  <text x="620" y="482" fill="#475569" font-size="10">48,000+ CDC Records Processed</text>
+  <text x="950" y="482" fill="#38BDF850" font-size="10">Python · Airflow · AWS S3 · Snowflake</text>
 </svg>
